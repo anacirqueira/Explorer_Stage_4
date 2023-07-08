@@ -9,7 +9,9 @@
 Depois de criada a lista:
 
 - Crie uma *função* que irá calcular a média das notas de cada aluno;
-- Supondo que a média, para esse concurso é *7*, verifique *se* cada aluno obteve sucesso ou não em entrar no concurso e mostre uma mensagem na tela.
+- Supondo que a média, para esse concurso é *7*, verifique *se*
+ cada aluno obteve sucesso ou não em entrar no concurso
+ e mostre uma mensagem na tela.
 
 */
 
@@ -36,9 +38,30 @@ let students = [
   }
 ]
 
-function calculoMedia() {
-  let media = (nota1 + nota2)/2
-  return media
+function calculoMedia(nota1, nota2) {
+  return (nota1 + nota2)/2
 }
 
-calculoMedia()
+function printAproved(aluno) {
+  return `
+  O(a) aluno(a) ${aluno.nome} teve a média de ${calculoMedia(aluno.nota1 + aluno.nota2)}
+  e foi APROVADO no concurso!
+  `
+}
+
+function printReproved(aluno) {
+  return `
+  O(a) aluno(a) ${aluno.nome} teve a média de ${calculoMedia(aluno.nota1 + aluno.nota2)}
+  e foi REPROVADO no concurso!
+  `
+}
+
+for (let aluno of students) {
+  if (calculoMedia >= 6) {
+    let message = printAproved(aluno)
+    alert(message)
+  } else {
+    let messageReproved = printReproved(aluno)
+    alert(messageReproved)
+  }
+}
